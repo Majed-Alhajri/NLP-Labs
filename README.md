@@ -14,7 +14,7 @@ original lab content and the completed tasks, already executed so all outputs ar
 | [07](Lab07_LLMs) | Large Language Models | Model families, DistilBERT sentiment, FLAN-T5 summarization, reflection, sampling challenge |
 | [08](Lab08_POS_Tagging) | Part-of-speech tagging | spaCy POS / fine-grained tags, *google* & *table* in context, displaCy visualization |
 | [09](Lab09_NER) | Named Entity Recognition | NER on user input, adding missed entities + counts + visualization, training a custom NER model |
-| [10](Lab10_Machine_Translation) | Machine translation (Keras LSTM) | Layer questions, English → French LSTM translation model on the Kaggle dataset (BLEU) |
+| [10](Lab10_Machine_Translation) | Machine translation (Keras LSTM) | Layer questions, English → French encoder–decoder LSTM with teacher forcing on the Kaggle dataset (BLEU ≈ 0.16) |
 | [11](Lab11_Attention_RNN) | Attention with RNN | Attention weights for 3 questions, attention comparison for two similar questions |
 
 ## Running the notebooks
