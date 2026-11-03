@@ -14,7 +14,7 @@ original lab content and the completed tasks, already executed so all outputs ar
 | [07](Lab07_LLMs) | Large Language Models | Model families, DistilBERT sentiment, FLAN-T5 summarization, reflection, sampling challenge |
 | [08](Lab08_POS_Tagging) | Part-of-speech tagging | spaCy POS / fine-grained tags, *google* & *table* in context, displaCy visualization |
 | [09](Lab09_NER) | Named Entity Recognition | NER on user input, adding missed entities + counts + visualization, training a custom NER model |
-| [10](Lab10_Machine_Translation) | Machine translation (Keras LSTM) | Layer questions, English → French encoder–decoder LSTM with teacher forcing on the Kaggle dataset (BLEU ≈ 0.16) |
+| [10](Lab10_Machine_Translation) | Machine translation (Keras LSTM) | Layer questions, English → French encoder–decoder LSTM (Embedding → LSTM → RepeatVector → LSTM → softmax) trained on 20k short sentence pairs from the Kaggle dataset |
 | [11](Lab11_Attention_RNN) | Attention with RNN | Attention weights for 3 questions, attention comparison for two similar questions |
 
 ## Running the notebooks
@@ -32,8 +32,11 @@ labs are in each lab's `dataset/` folder.
 A few cells were adjusted so the notebooks run outside Google Colab and train correctly:
 
 - `/content/...` Colab paths now point to `kagglehub` downloads or the local `dataset/` folder.
-- Lab 2: `import nltk` added before `nltk.download(...)`.
+- Lab 2: `import nltk` added before `nltk.download(...)`, and `nltk.download('wordnet')` un-commented so the lemmatizer works.
+- Lab 3: the Pakistan tweets CSV contains a few invalid UTF-8 bytes, so it is read with `encoding_errors="ignore"`.
+- Lab 5: `import pandas as pd` added to the first cell (it was used before being imported).
 - Lab 6: the pre-processing `apply()` was indented after `return` inside the function, so it never ran; it was moved out.
-  `optimizer.zero_grad()` was added to the training loop.
+  `optimizer.zero_grad()` was added to the training loop, and `stratify=y` was added to the split as the markdown describes.
+- Lab 9: the visualization cell loads `custom_ner_model` only if it exists (it is created in Task 3), otherwise it uses the pretrained model.
 - Lab 11: `nn.RNN(..., batch_first=True)`, because the input is `(batch, words)`. Without it, the RNN read across
   questions instead of across words. `optimizer.zero_grad()` was also added to the training loop.
